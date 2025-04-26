@@ -1,2 +1,11 @@
 [tools]
 python = "3"
+uv = "latest"
+
+[tasks.check]
+description = "ruff check"
+run = "uv run ruff check"
+
+[tasks.dev]
+description = "run dev server"
+run = "uv run python manage.py runserver"
