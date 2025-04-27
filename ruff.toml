@@ -1,0 +1,21 @@
+extend-exclude = [".git", "**/__pycache__", "**/migrations", ".pytest_cache"]
+line-length = 120
+
+[lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "DJ", # django
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+]
+ignore = [
+    # "E501",  # line-too-long
+    "DJ008", # django-model-without-dunder-str
+]
+
+[format]
+quote-style = "single"
