@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: django-starter:slim-0.1.0
+    restart: always
+    environment:
+      - LANG=C.UTF-8
+      - DB_HOST=db
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+    networks:
+      - web_nw
+      - db_nw
+    depends_on:
+      - db
+
+  db:
+    image: postgres:17-alpine
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - ${DB_PORT:-5432}:5432
+    volumes:
+      - ./storage/pgdata:/var/lib/postgresql/data
+    networks:
+      - db_nw
+
+
+networks:
+  db_nw:
+    driver: bridge
+  web_nw:
+    driver: bridge
