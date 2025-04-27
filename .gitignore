@@ -8,8 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+.vscode
 
 .env
-/db.sqlite3
-
-db/
+storage/

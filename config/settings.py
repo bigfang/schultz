@@ -44,6 +44,8 @@ ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 # Application definition
 
 INSTALLED_APPS = [
+    'app.account',
+    'app.cli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,6 +65,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+AUTH_USER_MODEL = 'account.User'
 
 TEMPLATES = [
     {
