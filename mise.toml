@@ -2,9 +2,25 @@
 python = "3"
 uv = "latest"
 
+[tasks.ruff]
+description = "ruff"
+run = "uv run ruff"
+
 [tasks.check]
-description = "ruff check"
+description = "lint"
 run = "uv run ruff check"
+
+[tasks.format]
+description = "show format diff"
+run = "uv run ruff format --diff"
+
+[tasks.dj]
+description = "django-admin"
+run = "uv run python manage.py"
+
+[tasks.coll]
+description = "collect statics"
+run = "DJANGO_ENV=prod uv run python manage.py collectstatic"
 
 [tasks.dev]
 description = "run dev server"

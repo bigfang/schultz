@@ -11,4 +11,5 @@ wheels/
 .vscode
 
 .env
+/db.sqlite3
 storage/

@@ -3,19 +3,26 @@ line-length = 120
 
 [lint]
 select = [
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-    "B",  # flake8-bugbear
-    "DJ", # django
-    "C4", # flake8-comprehensions
-    "UP", # pyupgrade
+    "ALL",
+    # "E",  # pycodestyle errors
+    # "W",  # pycodestyle warnings
+    # "F",  # pyflakes
+    # "I",  # isort
+    # "B",  # flake8-bugbear
+    # "DJ", # django
+    # "C4", # flake8-comprehensions
+    # "UP", # pyupgrade
 ]
 ignore = [
+    "INP",  # flake8-no-pep420
+    "D",    # pydocstyle
+    "COM812",  # missing-trailing-comma
     # "E501",  # line-too-long
-    "DJ008", # django-model-without-dunder-str
 ]
+
+[lint.flake8-quotes]
+inline-quotes = "single"
 
 [format]
 quote-style = "single"
+exclude = ["manage.py"]

@@ -1,4 +1,5 @@
 import uuid
+from typing import ClassVar
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -12,7 +13,7 @@ class User(AbstractUser, TimestampMixin, DeleteMixin):
     first_name = None
     last_name = None
 
-    REQUIRED_FIELDS: list[str] = ['email']
+    REQUIRED_FIELDS: ClassVar[list[str]] = ['email']
 
     class Meta:
         db_table = 'auth_user'

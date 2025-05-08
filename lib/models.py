@@ -12,7 +12,7 @@ class TimestampMixin(models.Model):
 
 
 class DeleteManager(models.Manager):
-    def get_queryset(self):
+    def get_queryset(self) -> models.QuerySet:
         return super().get_queryset().filter(deleted_at=None)
 
 
@@ -27,11 +27,11 @@ class DeleteMixin(models.Model):
 
     @property
     def is_deleted(self) -> bool:
-        return True if self.deleted_at else False
+        return bool(self.deleted_at)
 
-    def _delete(self, using=None, keep_parents=False):
-        super().delete()
+    def hard_delete(self, using=None, keep_parents=False) -> None:  # noqa: ANN001, FBT002
+        super().delete(using=using, keep_parents=keep_parents)
 
-    def delete(self, using=None, keep_parents=False):
+    def delete(self) -> None:
         self.deleted_at = timezone.now()
         self.save()
