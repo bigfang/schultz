@@ -44,7 +44,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'app.account',
+    'app.user',
     'app.cli',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,7 +65,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'user.User'
 
 TEMPLATES = [
     {
